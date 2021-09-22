@@ -1,0 +1,138 @@
+#include <stdio.h>
+#include <math.h>
+float one (float a, float b,char SorP )
+{
+	switch (SorP)
+	{
+	case 'S':
+		return a * b;
+		break;
+	
+	case 'P':
+		return 2 * (a + b);
+		break;
+	
+	default:
+		printf("ошибка ввода");
+		break;
+	}
+}
+
+float two(float a) 
+{
+	return a * 3.14f;
+}
+
+float three(float a, float b) 
+{
+	return (a + b) / 2;
+}
+
+float four (float a, float b, char WhatToDo)
+{
+	a *= a;
+	b *= b;
+	switch (WhatToDo)
+	{
+	case('1'):
+		return a + b;
+		break;
+	case('2'):
+		return a - b;
+		break;
+	case('3'):
+		return a * b;
+		break;
+	case('4'):
+		return a / b;
+		break;
+	
+	default:
+		printf("ошибка ввода");
+		break;
+	}
+
+}
+
+float five(float a, float b, char WhatToDo)
+{
+	a = fabsf (a);
+	b = fabsf (b);
+	switch (WhatToDo)
+	{
+	case('1'):
+		return a + b;
+		break;
+	case('2'):
+		return a - b;
+		break;
+	case('3'):
+		return a * b;
+		break;
+	case('4'):
+		return a / b;
+		break;
+
+	default:
+		printf("ошибка ввода");
+		break;
+	}
+
+}
+
+int main ()
+{
+	printf("рите действие \n 1) Вычисление периметра\ площади прямоугольника\n 2) Вычисление длины окружности \n 3) среднее арифмитическое двух чисел \n 4) сумма, разность, произведение и частное квадратов двух чисел \n 5) сумма, разность, произведение ичастное модулей жвух чисел" );
+	int deistv;
+	float firstNum, secondNum;
+	scanf("%d", deistv);
+	switch (deistv)
+	{
+	case(1):
+		printf("Введите первую сторону");
+		scanf("%f", firstNum);
+		
+		printf("Введите вторую сторону");
+		scanf("%f", secondNum);
+		
+		printf("Периметр: %d \nПлощадь: %d",one(firstNum,secondNum,'P'), one(firstNum, secondNum, 'S'));
+		break;
+	case(2):
+		printf("Введите радиус");
+		scanf("%f", firstNum);
+		
+		printf("Длинна окружности: %f", two(firstNum));
+		break;
+	case(3):
+		printf("Введите первое число");
+		scanf("%f", firstNum);
+		
+		printf("Введите второе число");
+		scanf("%f", secondNum);
+
+		printf("Среднее арифмитическое: %f", three(firstNum, secondNum));
+		break;
+	case(4):
+		printf("Введите первое число");
+		scanf("%f", firstNum);
+		
+		printf("Введите второе число");
+		scanf("%f", secondNum);
+		
+		printf("Сумма: %f \n Разность: %f \n Произведение: %f \n Частное: %f ", four(firstNum, secondNum, '1'), four(firstNum, secondNum, '2'), four(firstNum, secondNum, '3'), four(firstNum, secondNum, '4'));
+		break;
+	case(5):
+		printf("Введите первое число");
+		scanf("%f", firstNum);
+
+		printf("Введите второе число");
+		scanf("%f", secondNum);
+
+		printf("Сумма: %f \n Разность: %f \n Произведение: %f \n Частное: %f ", five(firstNum, secondNum, '1'), five(firstNum, secondNum, '2'), five(firstNum, secondNum, '3'), five(firstNum, secondNum, '4'));
+		break;
+	default:
+		printf("Ошибка ввода");
+		break;
+	}
+
+}
