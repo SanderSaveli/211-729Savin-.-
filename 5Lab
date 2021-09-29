@@ -1,0 +1,178 @@
+#include <iostream>
+#include <math.h>
+
+using namespace std;
+
+int one ()
+{
+    int firstPoint[2]{};
+    int secondPoint[2]{};
+    int XLeg, YLeg = 0;
+    double hypotenuse;
+
+    cout << "Введите координаты X и Y для 2 точек\n\tПервая Точка:\nX: ";
+    cin >> firstPoint[0];
+    cout << "Y: ";
+    cin >> firstPoint[1];
+    
+    cout << "\tВторая Точка:\nX: ";
+    cin >> secondPoint[0];
+    cout << "Y: ";
+    cin >> secondPoint[1];
+    
+    if (firstPoint[0] == secondPoint[0] && firstPoint[1] == secondPoint[1])
+    {
+        cout << "Вы ввели одинаковые координаты" << endl;
+        return 0;
+    }
+    else
+    {
+        XLeg = abs (firstPoint[0] - secondPoint[0]);
+        YLeg = abs (firstPoint[1] - secondPoint[1]);
+        hypotenuse = sqrt (pow(XLeg, 2) + pow(YLeg, 2));
+        cout << hypotenuse << endl;
+    }
+    return 0;
+}
+
+int two()
+{
+    int A = 0;
+    int B = 0;
+    int C = 0;
+    cout << "Введите точку A: " << endl;
+    cin >> A;
+    cout << "Введите точку B: " << endl;
+    cin >> B;
+    cout << "Введите точку C: " << endl;
+    cin >> C;
+    
+    cout << "Длинна отрезка AC = " << abs(C - A) << endl;
+    cout << "Длинна отрезка AB = " << abs(C - B) << endl;
+    cout << "Сумма отрезков = " << abs(C - A) + abs(C - B) << endl;
+    
+    return 0;
+}
+
+int three()
+{
+    int A = 0;
+    int B = 0;
+    int C = 0;
+    cout << "Введите точку A: " << endl;
+    cin >> A;
+    cout << "Введите точку B: " << endl;
+    cin >> B;
+    cout << "Введите точку C: " << endl;
+    cin >> C;
+    if ((A > C && B > C)||(A < C && B < C))
+    {
+        cout << "Ошибка ввода" << endl;
+    }
+    else
+    {
+        cout << abs(C - A) * abs(C - B) << endl;
+    }
+    return 0;
+}
+
+int four()
+{
+    int firstPoint[2]{};
+    int secondPoint[2]{};
+    int Xside, Yside = 0;
+
+    cout << "Введите координаты X и Y для 2 противоположных вершин\n\tПервая Вершина:\nX: ";
+    cin >> firstPoint[0];
+    cout << "Y: ";
+    cin >> firstPoint[1];
+
+    cout << "\tВторая Вершина:\nX: ";
+    cin >> secondPoint[0];
+    cout << "Y: ";
+    cin >> secondPoint[1];
+    
+    Xside = abs(firstPoint[0] - secondPoint[0]);
+    Yside = abs(firstPoint[1] - secondPoint[1]);
+    if (Xside == 0 || Yside == 0)
+        cout << "Одна из сторон прямоугольника равна 0" << endl;
+    else
+    {
+        cout << "Площадь = " << Xside * Yside << "\nПериметр = " << 2 * (Xside * Yside) << endl;
+    }
+    return 0;
+}
+int five()
+{
+    int APoint[2]{};
+    int BPoint[2]{};
+    int CPoint[2]{};
+    double AB, BC, AC = 0;
+    double HP = 0; //HalfPerimeter
+    cout << "Введите координаты X и Y для 3 вершин треугольника\n\tПервая Вершина:\nX: ";
+    cin >> APoint[0];
+    cout << "Y: ";
+    cin >> APoint[1];
+
+    cout << "\tВторая Вершина:\nX: ";
+    cin >> BPoint[0];
+    cout << "Y: ";
+    cin >> BPoint[1];
+    
+    cout << "\tТретья Вершина:\nX: ";
+    cin >> CPoint[0];
+    cout << "Y: ";
+    cin >> CPoint[1];
+    
+    AB = sqrt(pow(abs(APoint[0] - BPoint[0]), 2) + pow(abs(APoint[1] - BPoint[1]), 2));
+    cout << AB << endl;
+    AC = sqrt(pow(abs(APoint[0] - CPoint[0]), 2) + pow(abs(APoint[1] - CPoint[1]), 2));
+    cout << AC << endl;
+    BC = sqrt(pow(abs(BPoint[0] - CPoint[0]), 2) + pow(abs(BPoint[1] - CPoint[1]), 2));
+    cout << BC << endl;
+    HP = (AB + BC + AC) / 2;
+    
+    cout << "Периметр = " << HP * 2 << "\nПлощадь = " << sqrt((HP*(HP-AB)) * ((HP - AC) * (HP - BC))) << endl;
+    return 0;
+}
+int main()
+{
+    setlocale(LC_ALL, "Rus");
+    int isContinue = 1;
+    int whatToDo = 0;
+    
+    while (isContinue)
+    {
+        cout << "Выбирите задание:\n 1) Найти расстояние между двумя точками с заданными координатами. \n 2) Найти длины отрезков AC и BC и их сумму.\n 3) Найти произведение длин отрезков AC и BC.\n 4) Найти периметр и площадь прямоугольника заданного 2 точками.\n 5) Найти периметр и площадь треугольника заданного 3 точками \n ";
+        cin >> whatToDo;
+        switch (whatToDo)
+        {
+        case (1):
+            one();
+            break;
+        case (2):
+            two();
+            break;
+        case (3):
+            three();
+            break;
+        case (4):
+            four();
+            break;
+        case (5):
+            five();
+            break;
+        default:
+            cout << "Ошибка ввода";
+            break;
+        }
+        cout << "Для выхода введите \"0\"\nДля продаджения введите любое число" << endl;
+        cin >> isContinue;
+    }
+    
+
+
+
+
+}
+
