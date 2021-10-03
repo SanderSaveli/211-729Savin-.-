@@ -1,0 +1,165 @@
+#include <iostream>
+#include <math.h>
+
+using namespace std;
+
+int one ()
+{
+    float res;
+    float angle;
+    cout << "Введите значение угла в градусах: " << endl;
+    cin >> angle;
+    if (angle <0 &&angle >360)
+    {
+        cout << "Ошибка ввода" << endl;
+    }
+    else 
+    {
+        res = angle / 57.32;
+        cout << "В радианах: " << res << endl;
+    }
+    
+    return 0;
+}
+
+int two()
+{
+    float res;
+    float angle;
+    cout << "Введите значение угла в радианах :" << endl;
+    cin >> angle;
+    res = angle * 57.32;
+    while (res > 360)
+    {
+        res -= 360;
+    }
+    cout << "В градусах: " << res << endl;
+    
+    return 0;
+}
+
+int three()
+{
+    float Kilogramm;
+    float cost;
+    int Y;
+    cout << "Введите известное колличество килограмм:" << endl;
+    cin >> Kilogramm;
+    cout << "Введите стоимость:" << endl;
+    cin >> cost;
+    cout << "Введите новое колличество килограмм: " << endl;
+    cin >> Y;
+    cout << "1 килограмм стоит:" << cost / Kilogramm << "\n" << Y << " килограмм стоят : " << (cost / Kilogramm) * Y << endl;
+    return 0;
+}
+
+int four()
+{
+    int v1,v2,S,t;
+
+    cout << "Введите скорость 1 автомобиля: " << endl;
+    cin >> v1;
+    cout << "Введите скорость 2 автомобиля: " << endl;
+    cin >> v2;
+    cout << "Введите расстояние меду автомобилями до начала рассчета: " << endl;
+    cin >> S;
+    cout << "Введите время которое автомобили находились в движении: " << endl;
+    cin >> t;
+    cout << "Расстояние между автомобилями равно: " << (v1 + v2) * t + S << endl;
+    return 0;
+}
+int five()
+{
+    int A,B;
+
+    cout << "Введите A: " << endl;
+    cin >> A;
+    cout << "Введите B: " << endl;
+    cin >> B;
+    if (A == 0 || B == 0)
+        cout << "Ошибка ввода";
+        return 0;
+    
+    cout << "x = -(B/A) = " << -(B / A) << endl;
+    return 0;
+}
+
+int six()
+{
+    int A, B , C, A1, B1, C1, opred ,dX,dY;
+    cout << "| __·x + B1·y = C1\n| A2·x + B2·y = C2" << endl;
+    cout << "Введите A: " << endl;
+    cin >> A;
+    
+    cout << "| "<<A<<"·x + __·y = C1\n| A2·x + B2·y = C2" << endl;
+    cout << "Введите B: " << endl;
+    cin >> B;
+    
+    cout << "| "<<A<<"·x + "<<B<<"·y = __\n| A2·x + B2·y = C2" << endl;
+    cout << "Введите C: " << endl;
+    cin >> C;
+    
+    cout << "| " << A << "·x + " << B << "·y = "<<C<<"\n| __·x + B1·y = C1" << endl;
+    cout << "Введите A1: " << endl;
+    cin >> A1;
+    
+    cout << "| " << A << "·x + " << B << "·y = " << C << "\n| "<<A1<<"·x + __·y = C1" << endl;
+    cout << "Введите B1: " << endl;
+    cin >> B1;
+    
+    cout << "| " << A << "·x + " << B << "·y = " << C << "\n| " << A1 << "·x + "<<B1<<"·y = __" << endl;
+    cout << "Введите C1: " << endl;
+    cin >> C1;
+
+    opred = A * B1 - B * A1;
+    dX = C * B1 - B * C1;
+    dY = A * C1 - C * A1;
+    
+    if (opred == 0)
+    {
+        cout << "Ошибка ввода";
+        return 0;
+    }
+    cout << " X = " << dX / opred << "\n Y = " << dY / opred << endl;
+    
+    return 0;
+}
+
+int main()
+{
+    setlocale(LC_ALL, "Rus");
+    int isContinue = 1;
+    int whatToDo = 0;
+    
+    while (isContinue)
+    {
+        cout << "Выберите задание:\n 1) Дано значение угла α в градусах (0 < α < 360). Определить значение этого же угла в радианах, учитывая, что 180◦ = π радианов. \n 2) Дано значение угла α в радианах (0 < α < 2·π). Определить значение этого же угла в градусах, учитывая, что 180◦ = π радианов\n 3) Известно, что X кг конфет стоит A рублей. Определить, сколько стоит 1 кг и Y кг этих же конфет. \n 4) Скорость первого автомобиля V1 км/ч, второго — V2 км/ч, расстояние между ними S км. Определить расстояние между ними через T часов, если автомобили удаляются друг от друга.  \n 5) Решить линейное уравнение A·x + B = 0, заданное своими коэффициентами A и B (коэффициент A не равен 0).  \n 6) Найти решение системы линейных уравнений вида:\n A1·x + B1·y = C1\n A2·x + B2·y = C2\n";
+        cin >> whatToDo;
+        switch (whatToDo)
+        {
+        case (1):
+            one();
+            break;
+        case (2):
+            two();
+            break;
+        case (3):
+            three();
+            break;
+        case (4):
+            four();
+            break;
+        case (5):
+            five();
+            break;
+        case (6):
+            six();
+            break;
+        default:
+            cout << "Ошибка ввода";
+            break;
+        }
+        cout << "Для выхода введите \"0\"\nДля продаджения введите любое число" << endl;
+        cin >> isContinue;
+    }
+}
