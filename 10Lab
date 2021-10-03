@@ -1,0 +1,173 @@
+
+#include <iostream>
+#include <math.h>
+
+using namespace std;
+
+int one ()
+{
+    int A, B;
+    cout << "Введите число A: " << endl;
+    cin >> A;
+    cout << "Введите число B: " << endl;
+    cin >> B;
+    if (A>2 && B<=3)
+    {
+        cout << "Верно" << endl;
+        return 0;
+    }
+    cout << "Неверно" << endl;
+    return 0;
+}
+
+int two()
+{
+    int A, B, C;
+    cout << "Введите число A: " << endl;
+    cin >> A;
+    cout << "Введите число B: " << endl;
+    cin >> B;
+    cout << "Введите число С: " << endl;
+    cin >> C;
+    if (B>A && C >B)
+    {
+        cout << "Верно" << endl;
+        return 0;
+    }
+    cout << "Неверно" << endl;
+    return 0;
+}
+
+int three()
+{
+    int A;
+    cout << "Введите число A: " << endl;
+    cin >> A;
+    if (A%2==0 && A/10 <10 && A/10>0)
+    {
+        cout << "Верно" << endl;
+        return 0;
+    }
+    cout << "Неверно" << endl;
+    return 0;
+}
+
+int four()
+{
+    int A;
+    cout << "Введите число A: " << endl;
+    cin >> A;
+    if (A/100>10 || A / 100 <= 0)
+    {
+        cout << "Ошибка ввода" << endl;
+        return 0;
+    }
+    
+    if (( A / 100 > ( A / 10 ) % 10 && (A / 10) % 10 > A%10) || (A / 100 < (A / 10) % 10 && (A / 10) % 10 < A % 10))
+    {
+        cout << "Верно" << endl;
+        return 0;
+    }
+    cout << "Неверно" << endl;
+    return 0;
+}
+
+int five()
+{
+    int A;
+    cout << "Введите число A: " << endl;
+    cin >> A;
+    if (A / 1000 > 10 || A / 1000 <= 0)
+    {
+        cout << "Ошибка ввода" << endl;
+        return 0;
+    }
+    if (A/1000 == A%1000 && (A/100)%10 == (A%100)/10 )
+    {
+        cout << "Верно" << endl;
+        return 0;
+    }
+    cout << "Неверно" << endl;
+    return 0;
+}
+
+int six ()
+{
+    int A, B, C;
+    cout << "Введите сторону A: " << endl;
+    cin >> A;
+    cout << "Введите сторону B: " << endl;
+    cin >> B;
+    cout << "Введите сторону С: " << endl;
+    cin >> C;
+
+    if (A*A==B*B+C*C || B*B == A*A + C*C || C*C==B*B+A*A)
+    {
+        cout << "Верно" << endl;
+        return 0;
+    }
+    cout << "Неверно" << endl;
+    return 0;
+}
+int seven ()
+{
+    int A, B, C;
+    cout << "Введите сторону A: " << endl;
+    cin >> A;
+    cout << "Введите сторону B: " << endl;
+    cin >> B;
+    cout << "Введите сторону С: " << endl;
+    cin >> C;
+
+    if (A<B+C && B<A+C && C<A+B)
+    {
+        cout << "Верно" << endl;
+        return 0;
+    }
+    cout << "Неверно" << endl;
+    return 0;
+}
+int main()
+{
+    setlocale(LC_ALL, "Rus");
+    int isContinue = 1;
+    int whatToDo = 0;
+    do
+    {
+        cout << "Выберите задание:\n 1) \n 2) \n 3) \n 4) \n 5) \n ";
+        cin >> whatToDo;
+
+        switch (whatToDo)
+        {
+        case (1):
+            one();
+            break;
+        case (2):
+            two();
+            break;
+        case (3):
+            three();
+            break;
+        case (4):
+            four();
+            break;
+        case (5):
+            five();
+            break;
+        case (6):
+            six();
+            break;
+        case (7):
+            seven();
+            break;
+        default:
+            cout << "Ошибка ввода";
+            break;
+        }
+
+        cout << "Для выхода введите \"0\"\nДля продаджения введите любое число" << endl;
+        cin >> isContinue;
+
+    } while (isContinue);
+
+}
