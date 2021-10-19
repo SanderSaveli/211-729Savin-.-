@@ -1,0 +1,510 @@
+#include <iostream>
+#include <Windows.h>
+#include <conio.h>
+#include <stdio.h>
+using namespace std;
+int Rainbow = 1;
+HANDLE Console;
+
+void ColorChanger (int Clr)
+{
+    if (Clr > 7)
+    {
+        Rainbow = 1;
+        Clr = 1;
+    }
+    switch (Clr)
+    {
+    case (1):
+        SetConsoleTextAttribute(Console, 4);
+        break;
+    case (2):
+        SetConsoleTextAttribute(Console, 6);
+        break;
+    case (3):
+        SetConsoleTextAttribute(Console, 14);
+        break;
+    case (4):
+        SetConsoleTextAttribute(Console, 2);
+        break;
+    case (5):
+        SetConsoleTextAttribute(Console, 3);
+        break;
+    case (6):
+        SetConsoleTextAttribute(Console, 1);
+        break;
+    case (7):
+        SetConsoleTextAttribute(Console, 5);
+        break;
+    }
+    Rainbow++;
+}
+
+int one ()
+{
+    int day, month;
+    ColorChanger(Rainbow);
+    cout << "Введите день: " << endl;
+    cin >> day;
+    ColorChanger(Rainbow);
+    cout << "Введите месяц: " << endl;
+    cin >> month;
+    ColorChanger(Rainbow);
+    if (day >31||day<1||month<1||month>12)
+    {
+        cout << "Ошибка ввода" << endl;
+        return 0;
+    }
+
+    switch (day)
+    {
+    case (10):
+        cout << "Десятое";
+        break;
+    case (11):
+        cout << "Одинадцатое";
+        break;
+    case (12):
+        cout << "Двенадцатое";
+        break;
+    case (13):
+        cout << "Тринадцатое";
+        break;
+    case (14):
+        cout << "Четырнадцатое";
+        break;
+    case (15):
+        cout << "Пятнадцатое";
+        break;
+    case (16):
+        cout << "Шестнадцатое";
+        break;
+    case (17):
+        cout << "Семьнадцатое";
+        break;
+    case (18):
+        cout << "Восемнадцатое";
+        break;
+    case (19):
+        cout << "Девятнадцатое";
+        break;
+    case (20):
+        cout << "Двадцатое";
+        break;
+    case (30):
+        cout << "Тридцатое";
+        break;
+    
+    default:
+        switch (day / 10)
+        {
+        case (2):
+            
+            cout << "Двадцать ";
+            break;
+        case (3):
+            cout << "Тридцать ";
+            break;
+
+        }
+        switch (day % 10)
+        {
+        case (1):
+            cout << "Первое";
+            break;
+        case (2):
+            cout << "Второе";
+            break;
+        case (3):
+            cout << "Третье";
+            break;
+        case (4):
+            cout << "Четвертое";
+            break;
+        case (5):
+            cout << "Пятое";
+            break;
+        case (6):
+            cout << "Шестое";
+            break;
+        case (7):
+            cout << "Седьмое";
+            break;
+        case (8):
+            cout << "Восьмое";
+            break;
+        case (9):
+            cout << "Девятое";
+            break;
+        }
+        break;
+    }
+
+    switch (month)
+    {
+    case (1):
+        cout << " Января" << endl;
+        break;
+    case (2):
+        cout << " Февраля" << endl;
+        break;
+    case (3):
+        cout << " Марта" << endl;
+        break;
+    case (4):
+        cout << " Апреля" << endl;
+        break;
+    case (5):
+        cout << " Мая" << endl;
+        break;
+    case (6):
+        cout << " Июня" << endl;
+        break;
+    case (7):
+        cout << " Июля" << endl;
+        break;
+    case (8):
+        cout << " Августа" << endl;
+        break;
+    case (9):
+        cout << " Сентября" << endl;
+        break;
+    case (10):
+        cout << " Октября" << endl;
+        break;
+    case (11):
+        cout << " Ноября" << endl;
+        break;
+    case (12):
+        cout << " Декабря" << endl;
+        break;
+    }
+    
+    return 0;
+}
+
+int two()
+{
+    int comand, route =0;
+    ColorChanger(Rainbow);
+    cout << "Введите начальное направление («1» — север, «2» — запад, «3» — юг, «4» — восток): " << endl;
+    cin >> route;
+    ColorChanger(Rainbow);
+    cout << "Введите Команду (0 — продолжать движение, 1 — поворот налево, −1 — поворот направо): " << endl;
+    cin >> comand;
+    ColorChanger(Rainbow);
+
+    route += comand;
+    switch (route)
+    {
+    case (1):
+        cout << "Север" << endl;
+        break;
+    case (2):
+        cout << "Запад" << endl;
+        break;
+    case (3):
+        cout << "Юг" << endl;
+        break;
+    case (4):
+        cout << "Восток" << endl;
+        break;
+    case (0):
+        cout << "Восток" << endl;
+        break;
+    }
+    return 0;
+}
+
+int three()
+{
+    int A;
+    ColorChanger(Rainbow);
+    cout << "Введите колличество заданий: " << endl;
+    cin >> A;
+    
+    switch (A)
+    {
+    case (10):
+        cout << "Десять";
+        break;
+    case (11):
+        cout << "Одинадцать";
+        break;
+    case (12):
+        cout << "Двенадцать";
+        break;
+    case (13):
+        cout << "Тринадцать";
+        break;
+    case (14):
+        cout << "Четырнадцать";
+        break;
+    case (15):
+        cout << "Пятнадцать";
+        break;
+    case (16):
+        cout << "Шестнадцать";
+        break;
+    case (17):
+        cout << "Семьнадцать";
+        break;
+    case (18):
+        cout << "Восемнадцать";
+        break;
+    case (19):
+        cout << "Девятнадцать";
+        break;
+    case (20):
+        cout << "Двадцать";
+        break;
+    default:
+        switch (A / 10)
+        {
+        case (2):
+
+            cout << "Двадцать ";
+            break;
+        case (3):
+            cout << "Тридцать ";
+            break;
+        case (4):
+            cout << "Тридцать ";
+            break;
+
+        }
+        switch (A % 10)
+        {
+        case (1):
+            cout << "Одно";
+            break;
+        case (2):
+            cout << "Два";
+            break;
+        case (3):
+            cout << "Три";
+            break;
+        case (4):
+            cout << "Четыре";
+            break;
+        case (5):
+            cout << "Пять";
+            break;
+        case (6):
+            cout << "Шесть";
+            break;
+        case (7):
+            cout << "Семь";
+            break;
+        case (8):
+            cout << "Восемь";
+            break;
+        case (9):
+            cout << "Девять";
+            break;
+        }
+        break;
+    }
+    cout << " учебных заданий" << endl;
+    return 0;
+}
+
+int four()
+{
+    int A;
+    ColorChanger(Rainbow);
+    cout << "Введите число: " << endl;
+    cin >> A;
+
+    ColorChanger(Rainbow);
+
+    switch (A/100)
+    {
+    case (1):
+        cout << "Сто";
+        break;
+    case (2):
+        cout << "Двести";
+        break;
+    case (3):
+        cout << "Триста";
+        break;
+    case (4):
+        cout << "Четыреста";
+        break;
+    case (5):
+        cout << "Пятьсот";
+        break;
+    case (6):
+        cout << "Шестьсот";
+        break;
+    case (7):
+        cout << "Семьсот";
+        break;
+    case (8):
+        cout << "Восемьсто";
+        break;
+    case (9):
+        cout << "Девятьсот";
+        break;
+    }
+    if (((A / 10) % 10)==1)
+    {
+        switch (A % 100)
+        {
+        case (10):
+            cout << " Десять";
+            break;
+        case (11):
+            cout << " Одинадцать";
+            break;
+        case (12):
+            cout << " Двенадцать";
+            break;
+        case (13):
+            cout << " Тринадцать";
+            break;
+        case (14):
+            cout << " Четырнадцать";
+            break;
+        case (15):
+            cout << " Пятнадцать";
+            break;
+        case (16):
+            cout << " Шестнадцать";
+            break;
+        case (17):
+            cout << " Семьнадцать";
+            break;
+        case (18):
+            cout << " Восемнадцать";
+            break;
+        case (19):
+            cout << " Девятнадцать";
+            break;
+        }
+        cout << "\n";
+        return 0;
+    }
+
+    switch ((A / 10)%10)
+    {
+    case (2): 
+        cout <<  " Двадцаь";
+        break;
+    case (3):
+        cout << " Тридцать";
+        break;
+    case (4):
+        cout << " Сорок";
+        break;
+    case (5):
+        cout << " Пятьдесят";
+        break;
+    case (6):
+        cout << " Шестьдесят";
+        break;
+    case (7):
+        cout << " Семьдесят";
+        break;
+    case (8):
+        cout << " Восемьдесят";
+        break;
+    case (9):
+        cout << " Девяносто";
+        break;
+    }
+    switch (A % 10)
+    {
+    case (1):
+        cout << " Один";
+        break;
+    case (2):
+        cout << " Два";
+        break;
+    case (3):
+        cout << " Три";
+        break;
+    case (4):
+        cout << " Четыре";
+        break;
+    case (5):
+        cout << " Пять";
+        break;
+    case (6):
+        cout << " Шесть";
+        break;
+    case (7):
+        cout << " Семь";
+        break;
+    case (8):
+        cout << " Восемь";
+        break;
+    case (9):
+        cout << " Девять";
+        break;
+    }
+    cout << "\n";
+    return 0;
+}
+int five()
+{
+
+    return 0;
+}
+int main()
+{
+    setlocale(LC_ALL, "Rus");
+    Console = GetStdHandle(STD_OUTPUT_HANDLE);
+    int isContinue = 1;
+    int whatToDo = 0;
+
+    Beep(600, 500);
+
+    do
+    {
+        ColorChanger(Rainbow);
+        cout << "Выберите задание:\n 1) Дан номер дня – целое число от 1 до 31 и месяца — целое число в диапазоне 1–12 (1 — январь, 2 — февраль и т. д.). Вывести дату в виде текста (например, «пятое января»). \n ";
+        ColorChanger(Rainbow);
+        cout << " 2) Робот может перемещаться в четырех направлениях («С» — север, «З» — запад, «Ю» — юг, «В» — восток) и принимать три цифровые команды: 0 — продолжать движение, 1 — поворот налево, −1 — поворот направо. Дан символ C — исходное направление робота и целое число N — посланная ему команда. Вывести направление робота после выполнения полученной команды" << endl;
+        ColorChanger(Rainbow);
+        cout << " 3) Дано целое число в диапазоне 10–40, определяющее количество учебных заданий по некоторой теме. Вывести строку-описание указанного количества заданий, обеспечив правильное согласование числа со словами «учебное задание», например: 18 — «восемнадцать учебных заданий»." << endl;
+        ColorChanger(Rainbow);
+        cout << " 4) Дано целое число в диапазоне 100–999. Вывести строку-описание данного числа, например: 256 — «двести пятьдесят шесть», 814 — «восемьсот четырнадцать»." << endl;
+        ColorChanger(Rainbow);
+        cout << " 5) В восточном календаре принят 60-летний цикл, состоящий из 12- летних подциклов, обозначаемых названиями цвета: зеленый, красный, желтый, белый и черный. В каждом подцикле годы носят названия животных: крысы, коровы, тигра, зайца, дракона, змеи, лошади, овцы, обезьяны, курицы, собаки и свиньи. По номеру года определить его название, если 1984 год — начало цикла: «год зеленой крысы»." << endl;
+        ColorChanger(Rainbow);
+        cin >> whatToDo;
+
+        switch (whatToDo)
+        {
+        case (1):
+            one();
+            break;
+        case (2):
+            two();
+            break;
+        case (3):
+            three();
+            break;
+        case (4):
+            four();
+            break;
+        case (5):
+            five();
+            break;
+        default:
+            cout << "Ошибка ввода";
+            break;
+        }
+        ColorChanger(Rainbow);
+        cout << "Для выхода введите \"0\"\nДля продаджения введите любое число" << endl;
+        ColorChanger(Rainbow);
+        cin >> isContinue;
+
+    } while (isContinue);
+    ColorChanger(Rainbow);
+}
+
+
+
