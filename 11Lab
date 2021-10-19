@@ -1,0 +1,313 @@
+#include <iostream>
+#include <Windows.h>
+#include <conio.h>
+#include <stdio.h>
+#include <algorithm>
+#include <math.h>
+using namespace std;
+int Rainbow = 1;
+HANDLE Console;
+
+void ColorChanger (int Clr) //это не относится к заданию, сделано искючительно для красоты 
+{
+    if (Clr > 7)
+    {
+        Rainbow = 1;
+        Clr = 1;
+    }
+    switch (Clr)
+    {
+    case (1):
+        SetConsoleTextAttribute(Console, 4);
+        break;
+    case (2):
+        SetConsoleTextAttribute(Console, 6);
+        break;
+    case (3):
+        SetConsoleTextAttribute(Console, 14);
+        break;
+    case (4):
+        SetConsoleTextAttribute(Console, 2);
+        break;
+    case (5):
+        SetConsoleTextAttribute(Console, 3);
+        break;
+    case (6):
+        SetConsoleTextAttribute(Console, 1);
+        break;
+    case (7):
+        SetConsoleTextAttribute(Console, 5);
+        break;
+    }
+    Rainbow++;
+}
+
+int one ()
+{
+    int A, B = 0;
+    ColorChanger(Rainbow);
+    cout << "Введите A: " << endl;
+    ColorChanger(Rainbow);
+    cin >> A;
+    ColorChanger(Rainbow);
+    cout << "Введите B: " << endl;
+    ColorChanger(Rainbow);
+    cin >> B;
+
+    if (A==B)
+    {
+        A = 0;
+        B = 0;
+        ColorChanger(Rainbow);
+        cout << "A: " << A << "\nB: " << B << endl;
+    }
+    else
+    {
+        if (A>B)
+        {
+            B = A;
+        }
+        else
+        {
+            A = B;
+        }
+        ColorChanger(Rainbow);
+        cout << "A: " << A << "\nB: " << B << endl;
+    }
+    return 0;
+}
+
+int two()
+{
+    int arr [3];
+    
+    ColorChanger(Rainbow);
+    cout << "Введите A: " << endl;
+    ColorChanger(Rainbow);
+    cin >> arr[0];
+    ColorChanger(Rainbow);
+    cout << "Введите B: " << endl;
+    ColorChanger(Rainbow);
+    cin >> arr[1];
+    cout << "Введите B: " << endl;
+    ColorChanger(Rainbow);
+    cin >> arr[2];
+    
+    sort(arr, arr + 3);
+    ColorChanger(Rainbow);
+    cout << "Сумма наибольших:" << arr[1] + arr[2] << endl;
+    return 0;
+}
+
+int three()
+{
+    int A[2]{};
+    int B[2]{};
+    int C[2]{};
+
+    int AB, AC = 0;
+
+    ColorChanger(Rainbow);
+    cout << "Введите координаты X и Y для 3 точек\n\tA:\nX: ";
+    cin >> A[0];
+    ColorChanger(Rainbow);
+    cout << "Y: ";
+    cin >> A[1];
+
+    ColorChanger(Rainbow);
+    cout << "\tB:\nX: ";
+    cin >> B[0];
+    ColorChanger(Rainbow);
+    cout << "Y: ";
+    cin >> B[1];
+
+    ColorChanger(Rainbow);
+    cout << "\tС:\nX: ";
+    cin >> C[0];
+    ColorChanger(Rainbow);
+    cout << "Y: ";
+    cin >> C[1];
+
+    AB = sqrt(pow (abs ( A[0] - B[0] ), 2) * pow (abs (A[1] - B[1]), 2));
+    AC = sqrt(pow (abs ( A[0] - C[0] ), 2) * pow (abs (A[1] - C[1]), 2));
+    if (AB > AC)
+    {
+        ColorChanger(Rainbow);
+        cout << "B Ближе, \nРасстояние: " << AB <<endl;
+    }
+    if (AB < AC)
+    {
+        ColorChanger(Rainbow);
+        cout << "C Ближе, \nРасстояние: " << AC << endl;
+    }
+    if (AB == AC)
+    {
+        ColorChanger(Rainbow);
+        cout << "Расстояния равны " << endl;
+    }
+    return 0;
+}
+
+int four()
+{
+    int A[2]{};
+
+    ColorChanger(Rainbow);
+    cout << "Введите A:\nX: ";
+    cin >> A[0];
+    ColorChanger(Rainbow);
+    cout << "Y: ";
+    cin >> A[1];
+    if (A[0]>0 && A[1]>0)
+    {
+        ColorChanger(Rainbow);
+        cout << "I четверть" << endl;
+    }
+    else if (A[0] < 0 && A[1] > 0)
+    {
+        ColorChanger(Rainbow);
+        cout << "II четверть" << endl;
+    }
+    else if (A[0] < 0 && A[1] < 0)
+    {
+        ColorChanger(Rainbow);
+        cout << "III четверть" << endl;
+    }
+    else if (A[0] > 0 && A[1] < 0)
+    {
+        ColorChanger(Rainbow);
+        cout << "IV четверть" << endl;
+    }
+    return 0;
+}
+int five()
+{
+    int A;
+    ColorChanger(Rainbow);
+    cout << "Введите A" << endl;
+    cin >> A;
+    if (A == 0)
+    {
+        ColorChanger(Rainbow);
+        cout << "нулевое число" << endl;
+        return 0;
+    }
+    if (A>0)
+    {
+        ColorChanger(Rainbow);
+        cout << "Положительное ";
+    }
+    else
+    {
+        ColorChanger(Rainbow);
+        cout << "Отрицательное ";
+    }
+    if  (A %2== 0)
+    {
+        cout << "Четное число \n";
+    }
+    else
+    {
+        cout << "Нечетное число \n";
+    }
+    return 0;
+}
+int six()
+{
+    int A;
+    ColorChanger(Rainbow);
+    cout << "Введите A" << endl;
+    cin >> A;
+    if (A >=1000 || A <= 0)
+    {
+        ColorChanger(Rainbow);
+        cout << "Ошибка ввода" << endl;
+        return 0;
+    }
+    if (A >= 100 )
+    {
+        ColorChanger(Rainbow);
+        cout << "Трехзачное ";
+    }
+    else
+    {
+        if (A >=10)
+        {
+            ColorChanger(Rainbow);
+            cout << "Двузночное ";
+        }
+        else
+        {
+            ColorChanger(Rainbow);
+            cout << "Однозначнрое ";
+        }
+    }
+    if (A % 2 == 0)
+    {
+        cout << "Четное число \n";
+    }
+    else
+    {
+        cout << "Нечетное число \n";
+    }
+    return 0;
+}
+int main()
+{
+    Console = GetStdHandle(STD_OUTPUT_HANDLE);
+    setlocale(LC_ALL, "Rus");
+    int isContinue = 1;
+    int whatToDo = 0;
+    do
+    {
+        ColorChanger(Rainbow);
+        cout << "Выберите задание:\n 1) Даны две переменные целого типа: A и B. Если их значения не равны, то присвоить каждой переменной большее из этих значений, а если равны, то присвоить переменным нулевые значения. Вывести новые значения переменных A и B. \n";
+        ColorChanger(Rainbow);
+        cout << " 2) Даны три числа. Найти сумму двух наибольших из них\n";
+        ColorChanger(Rainbow);
+        cout << " 3) На плоскости расположены три точки: A, B, C. Определить, какая из двух последних точек (B или C) расположена ближе к A, и вывести эту точку и ее расстояние от точки A.\n";
+        ColorChanger(Rainbow);
+        cout << " 4) Даны координаты точки, не лежащей на координатных осях OX и OY. Определить номер координатной четверти, в которой находится данная точка\n";
+        ColorChanger(Rainbow);
+        cout << " 5) Дано целое число. Вывести его строку-описание вида «отрицательное четное число», «нулевое число», «положительное нечетное число» и т. д.\n";
+        ColorChanger(Rainbow);
+        cout << " 6) Дано целое число, лежащее в диапазоне 1–999. Вывести его строкуописание вида «четное двузначное число», «нечетное трехзначное число» и т. д.\n";
+        ColorChanger(Rainbow);
+        cin >> whatToDo;
+
+        switch (whatToDo)
+        {
+        case (1):
+            one();
+            break;
+        case (2):
+            two();
+            break;
+        case (3):
+            three();
+            break;
+        case (4):
+            four();
+            break;
+        case (5):
+            five();
+            break;
+        case (6):
+            six();
+            break;
+        default:
+            ColorChanger(Rainbow);
+            cout << "Ошибка ввода";
+            break;
+        }
+        ColorChanger(Rainbow);
+        cout << "Для выхода введите \"0\"\nДля продаджения введите любое число" << endl;
+        cin >> isContinue;
+
+    } while (isContinue);
+
+}
+
+
+
+
