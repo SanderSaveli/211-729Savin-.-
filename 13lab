@@ -1,0 +1,188 @@
+
+#include <iostream>
+#include <Windows.h>
+#include <conio.h>
+#include <stdio.h>
+using namespace std;
+int Rainbow = 1;
+HANDLE Console;
+
+void ColorChanger (int Clr)
+{
+    if (Clr > 7)
+    {
+        Rainbow = 1;
+        Clr = 1;
+    }
+    switch (Clr)
+    {
+    case (1):
+        SetConsoleTextAttribute(Console, 4);
+        break;
+    case (2):
+        SetConsoleTextAttribute(Console, 6);
+        break;
+    case (3):
+        SetConsoleTextAttribute(Console, 14);
+        break;
+    case (4):
+        SetConsoleTextAttribute(Console, 2);
+        break;
+    case (5):
+        SetConsoleTextAttribute(Console, 3);
+        break;
+    case (6):
+        SetConsoleTextAttribute(Console, 1);
+        break;
+    case (7):
+        SetConsoleTextAttribute(Console, 5);
+        break;
+    }
+    Rainbow++;
+}
+
+int one ()
+{
+    int cost;
+    ColorChanger(Rainbow);
+    cout << "Введите цену одного кг конфет" << endl;
+    ColorChanger(Rainbow);
+    cin >> cost;
+    for (float i = 0.1; i < 1.1; i+=0.1)
+    {
+        ColorChanger(Rainbow);
+        cout << i << " кг стоят: " << cost * i << endl;
+    }
+
+    return 0;
+}
+
+int two()
+{
+    double A=1 ,n = 0;
+    ColorChanger(Rainbow);
+    cout << "Введите число" << endl;
+    ColorChanger(Rainbow);
+    cin >> n;
+    for (float i = 1; i < n; i+=1)
+    {
+        A *= i;
+    }
+    ColorChanger(Rainbow);
+    cout << "Произведение сомножителей равно: " << A;
+    return 0;
+}
+
+int three()
+{
+    int A,n = 0;
+    ColorChanger(Rainbow);
+    cout << "Введите число" << endl;
+    ColorChanger(Rainbow);
+    cin >> A;
+    for (int i = 1; i <=A*2-1;i+=2)
+    {
+        n += i;
+        ColorChanger(Rainbow);
+        cout << "Добавлене нового слагаемого: " << n << endl;
+    }
+    return 0;
+}
+
+int four()
+{
+    float A = 0;
+    int n = 0;
+    int summ = 0;
+    ColorChanger(Rainbow);
+    cout << "Введите число" << endl;
+    ColorChanger(Rainbow);
+    cin >> A;
+    ColorChanger(Rainbow);
+    cout << "Введите степень" << endl;
+    ColorChanger(Rainbow);
+    cin >> n;
+    for (int i = 0; i <= n; i++)
+    {
+        summ += pow(A, i);
+    }
+    ColorChanger(Rainbow);
+    cout << "Возведение: " << summ << endl;
+
+    return 0;
+}
+int five()
+{
+    float A = 0;
+    int n = 0;
+    int summ = 0;
+    ColorChanger(Rainbow);
+    cout << "Введите число" << endl;
+    ColorChanger(Rainbow);
+    cin >> A;
+    ColorChanger(Rainbow);
+    cout << "Введите степень" << endl;
+    ColorChanger(Rainbow);
+    cin >> n;
+    for (int i = 0; i <= n; i++)
+    {
+        summ += pow(-A, i);
+    }
+    ColorChanger(Rainbow);
+    cout << "Возведение: " << summ << endl;
+
+    return 0;
+}
+int main()
+{
+    setlocale(LC_ALL, "Rus");
+    Console = GetStdHandle(STD_OUTPUT_HANDLE);
+    int isContinue = 1;
+    int whatToDo = 0;
+
+    do
+    {
+        ColorChanger(Rainbow);
+        cout << "Выберите задание:\n 1) Дано вещественное число — цена 1 кг конфет. Вывести стоимость 0.1, 0.2, . . . , 1 кг конфет. \n";
+        ColorChanger(Rainbow);
+        cout << " 2) Дано целое число N (> 0). Найти произведение 1.1 · 1.2 · 1.3 · . . . (N сомножителей)." << endl;
+        ColorChanger(Rainbow);
+        cout << " 3) Дано целое число N (> 0). Найти квадрат данного числа, используя для его вычисления следующую формулу: N2 = 1 + 3 + 5 + . . . + (2·N - 1). После добавления к сумме каждого слагаемого выводить текущее значение суммы" << endl;
+        ColorChanger(Rainbow);
+        cout << " 4) Дано вещественное число A и целое число N (> 0). Используя один цикл, найти сумму 1 + A + A2 + A3 + . . . + AN" << endl;
+        ColorChanger(Rainbow);
+        cout << " 5) Дано вещественное число A и целое число N (> 0). Используя один цикл, найти значение выражения  1 - A + A2 - A3 + . ..+ AN . Условный оператор не использовать." << endl;
+
+        cin >> whatToDo;
+
+        switch (whatToDo)
+        {
+        case (1):
+            one();
+            break;
+        case (2):
+            two();
+            break;
+        case (3):
+            three();
+            break;
+        case (4):
+            four();
+            break;
+        case (5):
+            five();
+            break;
+        default:
+            cout << "Ошибка ввода";
+            break;
+        }
+        ColorChanger(Rainbow);
+        cout << "Для выхода введите \"0\"\nДля продаджения введите любое число" << endl;
+        cin >> isContinue;
+
+    } while (isContinue);
+
+}
+
+
+
