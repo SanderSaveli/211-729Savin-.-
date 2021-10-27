@@ -1,0 +1,246 @@
+#include <iostream>
+#include <Windows.h>
+#include <conio.h>
+#include <stdio.h>
+using namespace std;
+int Rainbow = 1;
+HANDLE Console;
+
+void ColorChanger (int Clr)
+{
+    if (Clr > 7)
+    {
+        Rainbow = 1;
+        Clr = 1;
+    }
+    switch (Clr)
+    {
+    case (1):
+        SetConsoleTextAttribute(Console, 4);
+        break;
+    case (2):
+        SetConsoleTextAttribute(Console, 6);
+        break;
+    case (3):
+        SetConsoleTextAttribute(Console, 14);
+        break;
+    case (4):
+        SetConsoleTextAttribute(Console, 2);
+        break;
+    case (5):
+        SetConsoleTextAttribute(Console, 3);
+        break;
+    case (6):
+        SetConsoleTextAttribute(Console, 1);
+        break;
+    case (7):
+        SetConsoleTextAttribute(Console, 5);
+        break;
+    }
+    Rainbow++;
+}
+
+int PowerA3(int A)
+{
+    return pow(A, 3);
+}
+
+int Sign (int x)
+{
+    if (x <= 0)
+    {
+        return -1;
+    }
+    else if(x == 0)
+    {
+        return 0;
+    }
+    else if (x >= 1)
+    {
+        return 1;
+    }
+}
+
+float RingS (int R1,int R2)
+{
+    float S1, S2;
+    S1 = pow(R1, 2) * 3.14;
+    S2 = pow(R2, 2) * 3.14;
+    return S1 - S2;
+}
+
+int Quarter (int X, int Y)
+{
+    if (X >0 && Y > 0)
+    {
+        return 1;
+    }
+    else if (X < 0 && Y > 0)
+    {
+        return 2;
+    }
+    else if (X < 0 && Y < 0)
+    {
+        return 3;
+    }
+    else if (X > 0 && Y < 0)
+    {
+        return 4;
+    }
+    return 0;
+}
+
+int Fact2 (int N)
+{
+    int summ = 0;
+    if (N % 2 == 0)
+    {
+        for (int i = 1; i < N; i += 2)
+        {
+            summ += i;
+        }
+        return summ;
+    }
+    else
+    {
+        for (int i = 2; i < N; i += 2)
+        {
+            summ += i;
+        }
+        return summ;
+    }
+}
+
+int one ()
+{
+    float A;
+
+    ColorChanger(Rainbow);
+    cout << "Введите A: " << endl;
+    ColorChanger(Rainbow);
+    cin >> A;
+    ColorChanger(Rainbow);
+    cout << "3 степень этого числаа: " << PowerA3(A) << endl;
+    return 0;
+}
+
+int two()
+{
+    int A, B,otv = 0;
+    ColorChanger(Rainbow);
+    cout << "Введите A: " << endl;
+    ColorChanger(Rainbow);
+    cin >> A;
+    ColorChanger(Rainbow);
+    cout << "Введите B: " << endl;
+    ColorChanger(Rainbow);
+    cin >> B;
+    ColorChanger(Rainbow);
+    otv = Sign(A) + Sign(B);
+    cout << otv << endl;;
+    return 0;
+}
+
+int three()
+{
+    int R1, R2;
+    ColorChanger(Rainbow);
+    cout << "Введите радиус большей окружности: " << endl;
+    ColorChanger(Rainbow);
+    cin >> R1;
+    ColorChanger(Rainbow);
+    cout << "Введите радиус меньшей окружности: " << endl;
+    ColorChanger(Rainbow);
+    cin >> R2;
+    if (R1 <= R2)
+    {
+        ColorChanger(Rainbow);
+        cout << "Ошибка ввода" << endl;
+        return 0;
+    }
+    ColorChanger(Rainbow);
+    cout << RingS(R1, R2) << endl;
+    return 0;
+}
+
+int four()
+{
+    int X, Y;
+    ColorChanger(Rainbow);
+    cout << "Введите координату X: " << endl;
+    ColorChanger(Rainbow);
+    cin >> X;
+    ColorChanger(Rainbow);
+    cout << "Введите координатку Y: " << endl;
+    ColorChanger(Rainbow);
+    cin >> Y;
+    if (X == 0 || Y == 0)
+    {
+        ColorChanger(Rainbow);
+        cout << "Ошибка ввода" << endl;
+        return 0;
+    }
+    ColorChanger(Rainbow);
+    cout << "Точка расположена в " << Quarter(X, Y) << " четверти" << endl;
+    return 0;
+}
+int five()
+{
+    int X;
+    ColorChanger(Rainbow);
+    cout << "Введите положительное число: " << endl;
+    ColorChanger(Rainbow);
+    cin >> X;
+    cout << "Двойной факториал этого числа равен: " << Fact2(X) << endl;
+    return 0;
+}
+int main()
+{
+    setlocale(LC_ALL, "Rus");
+    Console = GetStdHandle(STD_OUTPUT_HANDLE);
+    int isContinue = 1;
+    int whatToDo = 0;
+
+    do
+    {
+        ColorChanger(Rainbow);
+        cout << "Выберите задание:\n 1) Описать функцию PowerA3(A, B), вычисляющую третью степень числа A и возвращающую ее в переменной B (A — входной, B — выходной параметр; оба параметра являются вещественными). С помощью этой функции найти третьи степени пяти данных чисел. \n";
+        ColorChanger(Rainbow);
+        cout << " 2) Описать функцию Sign(X) целого типа, возвращающую для вещественного числа X следующие значения: −1, если X < 0; 0, если X = 0; 1, если X > 0." << endl;
+        ColorChanger(Rainbow);
+        cout << " 3) Описать функцию RingS(R1, R2) вещественного типа, находящую площадь кольца, заключенного между двумя окружностями с общим центром и радиусами R1 и R2 (R1 и R2 — вещественные, R1 > R2). С ее помощью найти площади трех колец, для которых даны внешние и внутренние радиусы." << endl;
+        ColorChanger(Rainbow);
+        cout << " 4) Описать функцию Quarter(x, y) целого типа, определяющую номер координатной четверти, в которой находится точка с ненулевыми вещественными координатами (x, y). С помощью этой функции найти номера координатных четвертей для трех точек с данными ненулевыми координатами" << endl;
+        ColorChanger(Rainbow);
+        cout << " 5) Описать функцию Fact2(N) вещественного типа, вычисляющую двойной факториал" << endl;
+
+        cin >> whatToDo;
+
+        switch (whatToDo)
+        {
+        case (1):
+            one();
+            break;
+        case (2):
+            two();
+            break;
+        case (3):
+            three();
+            break;
+        case (4):
+            four();
+            break;
+        case (5):
+            five();
+            break;
+        default:
+            cout << "Ошибка ввода";
+            break;
+        }
+
+        cout << "Для выхода введите \"0\"\nДля продаджения введите любое число" << endl;
+        cin >> isContinue;
+
+    } while (isContinue);
+
+}
