@@ -1,0 +1,247 @@
+#include <iostream>
+#include <Windows.h>
+#include <conio.h>
+#include <stdio.h>
+using namespace std;
+int Rainbow = 1;
+HANDLE Console;
+
+void ColorChanger (int Clr)
+{
+    if (Clr > 7)
+    {
+        Rainbow = 1;
+        Clr = 1;
+    }
+    switch (Clr)
+    {
+    case (1):
+        SetConsoleTextAttribute(Console, 4);
+        break;
+    case (2):
+        SetConsoleTextAttribute(Console, 6);
+        break;
+    case (3):
+        SetConsoleTextAttribute(Console, 14);
+        break;
+    case (4):
+        SetConsoleTextAttribute(Console, 2);
+        break;
+    case (5):
+        SetConsoleTextAttribute(Console, 3);
+        break;
+    case (6):
+        SetConsoleTextAttribute(Console, 1);
+        break;
+    case (7):
+        SetConsoleTextAttribute(Console, 5);
+        break;
+    }
+    Rainbow++;
+}
+
+int one ()
+{
+    int A, B;
+    ColorChanger(Rainbow);
+    cout << "Введите A: " << endl;
+    ColorChanger(Rainbow);
+    cin >> A;
+    ColorChanger(Rainbow);
+    cout << "Введите B: " << endl;
+    ColorChanger(Rainbow);
+    cin >> B;
+    if (A>=B)
+    {
+        cout << "Ошибка ввода" << endl;
+        return 0;
+    }
+    for  (int i = A; i <= B; i++)
+    {
+        ColorChanger(Rainbow);
+        for (int j = 0; j < i; j++)
+        {
+            cout << i << " ";
+        }
+        cout << "\n";
+    }
+    return 0;
+}
+
+int two()
+{
+    int A, B;
+    ColorChanger(Rainbow);
+    cout << "Введите A: " << endl;
+    ColorChanger(Rainbow);
+    cin >> A;
+    ColorChanger(Rainbow);
+    cout << "Введите B: " << endl;
+    ColorChanger(Rainbow);
+    cin >> B;
+    if (A <= B)
+    {
+        cout << "Ошибка ввода" << endl;
+        return 0;
+    }
+    ColorChanger(Rainbow);
+    cout <<"Свободного места:" << A % B << endl;
+    return 0;
+}
+
+int three()
+{
+    int A;
+    ColorChanger(Rainbow);
+    cout << "Введите N: " << endl;
+    ColorChanger(Rainbow);
+    cin >> A;
+    if (A <=1)
+    {
+        cout << "Ошибка ввода" << endl;
+        return 0;
+    }
+    for (int i=1; i < A;i++ )
+    {
+        int summ = 0;
+        for (int j = 1; j <= i; j++)
+        {
+            summ += j;
+        }
+        if (summ >= A)
+        {
+            ColorChanger(Rainbow);
+            cout << "Искомое число: " << i << "Сумма: " << summ << endl;
+            break;
+        }
+    }
+    return 0;
+}
+
+int four()
+{
+    float P = 0;
+    int summ = 1000;
+    ColorChanger(Rainbow);
+    cout << "Введите процент вклада: " << endl;
+    ColorChanger(Rainbow);
+    cin >> P;
+    P = (P + 100) / 100;
+    for (int i = 0; summ <= 1100 ; i++)
+    {
+        summ *= P;
+        if (summ <= 1100)
+        {
+            ColorChanger(Rainbow);
+            cout << "Вклад: " << summ << " Через " << i <<  " Месяцев" << endl;
+        }
+    }
+
+    return 0;
+}
+int five()
+{
+    int A, B;
+    ColorChanger(Rainbow);
+    cout << "Введите A: " << endl;
+    ColorChanger(Rainbow);
+    cin >> A;
+    ColorChanger(Rainbow);
+    cout << "Введите B: " << endl;
+    ColorChanger(Rainbow);
+    cin >> B;
+    while (A!=B)
+    {
+        if(A>B)
+        {
+            A -= B;
+        }
+        else
+        {
+            B -= A;
+        }
+    }
+    ColorChanger(Rainbow);
+    cout << "НОД равен: " << B << endl;
+    return 0;
+}
+int six () 
+{
+    int N,FirstNum = 1,SecondNum = 1,NewNum=1, Counter=2;
+    ColorChanger(Rainbow);
+    cout << "Введите N: " << endl;
+    ColorChanger(Rainbow);
+    cin >> N;
+    while (FirstNum + SecondNum < N)
+    {
+        Counter++;
+        NewNum = FirstNum + SecondNum;
+        SecondNum = FirstNum;
+        FirstNum = NewNum;
+    }
+    if (N== FirstNum + SecondNum)
+    {
+        ColorChanger(Rainbow);
+        cout << "Номер фибаначи: " << Counter << endl;
+    }
+    else
+    {
+        ColorChanger(Rainbow);
+        cout << "Не является числом фибаначи" << endl;
+    }
+    return 0;
+}
+int main()
+{
+    setlocale(LC_ALL, "Rus");
+    Console = GetStdHandle(STD_OUTPUT_HANDLE);
+    int isContinue = 1;
+    int whatToDo = 0;
+
+    do
+    {
+        ColorChanger(Rainbow);
+        cout << "Выберите задание:\n 1) Даны целые положительные числа A и B (A < B). Вывести все целые числа от A до B включительно; при этом каждое число должно выводиться столько раз, каково его значение (например, число 3 выводится 3 раза). \n";
+        ColorChanger(Rainbow);
+        cout << " 2) Даны положительные числа A и B (A > B). На отрезке длины A размещено максимально возможное количество отрезков длины B (без наложений). Не используя операции умножения и деления, найти длину незанятой части отрезка A." << endl;
+        ColorChanger(Rainbow);
+        cout << " 3) Дано целое число N (> 1). Вывести наименьшее из целых чисел K, для которых сумма 1 + 2 + . . . + K будет больше или равна N, и саму эту сумму." << endl;
+        ColorChanger(Rainbow);
+        cout << " 4) Начальный вклад в банке равен 1000 руб. Через каждый месяц размер вклада увеличивается на P процентов от имеющейся суммы (P — вещественное число, 0 < P < 25). По данному P определить, через сколько месяцев размер вклада превысит 1100 руб., и вывести найденное количество месяцев K (целое число) и итоговый размер вклада S (вещественное число)." << endl;
+        ColorChanger(Rainbow);
+        cout << " 5) Даны целые положительные числа A и B. Найти их наибольший общий делитель (НОД), используя алгоритм Евклида" << endl;
+        ColorChanger(Rainbow);
+        cout << " 6) Дано целое число N (> 1), являющееся числом Фибоначчи: N = FK. Найти целое число K — порядковый номер числа Фибоначчи N."<< endl;
+        cin >> whatToDo;
+
+        switch (whatToDo)
+        {
+        case (1):
+            one();
+            break;
+        case (2):
+            two();
+            break;
+        case (3):
+            three();
+            break;
+        case (4):
+            four();
+            break;
+        case (5):
+            five();
+            break;
+        case (6):
+            six();
+            break;
+        default:
+            cout << "Ошибка ввода";
+            break;
+        }
+        ColorChanger(Rainbow);
+        cout << "Для выхода введите \"0\"\nДля продаджения введите любое число" << endl;
+        cin >> isContinue;
+
+    } while (isContinue);
+    ColorChanger(Rainbow);
+}
