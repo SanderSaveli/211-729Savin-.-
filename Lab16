@@ -1,0 +1,244 @@
+#include <iostream>
+#include <Windows.h>
+#include <conio.h>
+#include <stdio.h>
+using namespace std;
+int Rainbow = 1;
+HANDLE Console;
+
+void ColorChanger (int Clr)
+{
+    if (Clr > 7)
+    {
+        Rainbow = 1;
+        Clr = 1;
+    }
+    switch (Clr)
+    {
+    case (1):
+        SetConsoleTextAttribute(Console, 4);
+        break;
+    case (2):
+        SetConsoleTextAttribute(Console, 6);
+        break;
+    case (3):
+        SetConsoleTextAttribute(Console, 14);
+        break;
+    case (4):
+        SetConsoleTextAttribute(Console, 2);
+        break;
+    case (5):
+        SetConsoleTextAttribute(Console, 3);
+        break;
+    case (6):
+        SetConsoleTextAttribute(Console, 1);
+        break;
+    case (7):
+        SetConsoleTextAttribute(Console, 5);
+        break;
+    }
+    Rainbow++;
+}
+
+int one()
+{
+    int n;
+    ColorChanger(Rainbow);
+    cout << "Введите размер массива:" << endl;
+    ColorChanger(Rainbow);
+    cin >> n;
+    int* arr = new int [n];
+    int j = 1;
+    ColorChanger(Rainbow);
+    for (int i =0; i < n ; i ++)
+    {
+        arr[i] = j;
+        j += 2;
+        cout << arr[i]<< " ";
+    }
+    cout <<endl;
+    return 0;
+}
+
+int two()
+{
+    int n,K,A;
+    ColorChanger(Rainbow);   
+    cout << "Введите размер массива:" << endl;
+    ColorChanger(Rainbow);
+    cin >> n;
+    ColorChanger(Rainbow);
+    cout << "Введите первый член:" << endl;
+    ColorChanger(Rainbow);
+    cin >> A;
+    ColorChanger(Rainbow);
+    cout << "Введите коэффицент:" << endl;
+    ColorChanger(Rainbow);
+    cin >> K;
+    int* arr = new int[n];
+    if (n <=1)
+    {
+        ColorChanger(Rainbow);
+        cout << "Слишком маленький размер массива";
+        return 0;
+    }
+    ColorChanger(Rainbow);
+    for (int i = 0; i < n - 1; i++)
+    {
+        arr[i] = A * pow(K, i);
+        cout << arr[i]<< " ";
+    }
+    cout << endl;
+    delete(arr);
+    return 0;
+}
+
+int three()
+{
+    int n, B, A,summ;
+    ColorChanger(Rainbow);
+    cout << "Введите размер массива:" << endl;
+    ColorChanger(Rainbow);
+    cin >> n;
+    ColorChanger(Rainbow);
+    cout << "Введите первый член:" << endl;
+    ColorChanger(Rainbow);
+    cin >> A;
+    ColorChanger(Rainbow);
+    cout << "Введите второй член:" << endl;
+    ColorChanger(Rainbow);
+    cin >> B;
+    int* arr = new int[n];
+    if (n <= 2)
+    {
+        ColorChanger(Rainbow);
+        cout << "Слишком маленький размер массива";
+        return 0;
+    }
+    arr[0] = A;
+    arr[1] = B;
+    summ = A + B;
+    ColorChanger(Rainbow);
+    cout << arr[0] << " " << arr[1]<< " ";
+    for (int i = 2; i < n - 1; i++)
+    {
+        arr[i] = summ;
+        summ += arr[i];
+        cout << arr[i] << " ";
+    }
+    cout << endl;
+    delete(arr);
+    return 0;
+}
+
+int four()
+{
+    int n;
+    ColorChanger(Rainbow);
+    cout << "Введите размер массива:" << endl;
+    ColorChanger(Rainbow);
+    cin >> n;
+    int* arr = new int[n];
+    int j = n - 1;
+    ColorChanger(Rainbow);
+    int t = 0;
+    for (int i = 0; i < n; i++)
+    {
+        arr[i] = t;
+        t += 1;
+    }
+    for (int i = 0; i < n / 2; i++) 
+    {
+        cout << arr[i] << " " << arr[j] << " ";
+        j--;
+    }
+    if (n % 2 != 0) 
+    {
+        cout << arr[n / 2];
+    }
+    cout << endl;
+    delete(arr);
+    return 0;
+}
+int five()
+{
+    int n;
+    ColorChanger(Rainbow);
+    cout << "Введите размер массива:" << endl;
+    ColorChanger(Rainbow);
+    cin >> n;
+    int* arr = new int[n];
+    int t = 0;
+    for (int i = 0; i < n; i++)
+    {
+        arr[i] = t;
+        t += 1;
+    }
+    ColorChanger(Rainbow);
+    for (int i = 0; i < n -1; i+=2)
+    {
+        cout << arr[i] << " ";
+    }
+    if (n % 2 != 0)
+    {
+        cout << arr[n-1]<< " ";
+    }
+    n = n % 2 == 0 ? n : n - 1;
+    for (int j = n-1 ; j>0 ; j-=2)
+    {
+        cout << arr[j] << " ";
+    }
+    cout << endl;
+    delete(arr);
+    return 0;
+}
+int main()
+{
+    setlocale(LC_ALL, "Rus");
+    Console = GetStdHandle(STD_OUTPUT_HANDLE);
+    int isContinue = 1;
+    int whatToDo = 0;
+
+    do
+    {
+        ColorChanger(Rainbow);
+        cout << "Выберите задание:\n 1) Дано целое число N (> 0). Сформировать и вывести целочисленный массив размера N, содержащий N первых положительных нечетных чисел: 1, 3, 5, . . . . \n";
+        ColorChanger(Rainbow);
+        cout << " 2) Дано целое число N (> 1), а также первый член A и знаменатель D геометрической прогрессии. Сформировать и вывести массив размера N, содержащий N первых членов данной прогрессии: A, A·D, A·D2 , A·D3 , . . ." << endl;
+        ColorChanger(Rainbow);
+        cout << " 3) Даны целые числа N (> 2), A и B. Сформировать и вывести целочисленный массив размера N, первый элемент которого равен A, второй равен B, а каждый последующий элемент равен сумме всех предыдущих" << endl;
+        ColorChanger(Rainbow);
+        cout << " 4) Дан массив A размера N. Вывести его элементы в следующем порядке: A1, AN , A2, AN−1, A3, AN−2," << endl;
+        ColorChanger(Rainbow);
+        cout << " 5) Дан массив A размера N. Вывести вначале его элементы с нечетными номерами в порядке возрастания номеров, а затем — элементы с четными номерами в порядке убывания номеров" << endl;
+
+        cin >> whatToDo;
+
+        switch (whatToDo)
+        {
+        case (1):
+            one();
+            break;
+        case (2):
+            two();
+            break;
+        case (3):
+            three();
+            break;
+        case (4):
+            four();
+            break;
+        case (5):
+            five();
+            break;
+        default:
+            cout << "Ошибка ввода";
+            break;
+        }
+
+        cout << "Для выхода введите \"0\"\nДля продаджения введите любое число" << endl;
+        cin >> isContinue;
+
+    } while (isContinue);
+
+}
