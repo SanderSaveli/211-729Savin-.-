@@ -1,0 +1,288 @@
+#include <iostream>
+#include <Windows.h>
+#include <conio.h>
+#include <stdio.h>
+#include <vector>
+#include <algorithm>
+using namespace std;
+int Rainbow = 1;
+HANDLE Console;
+
+void ColorChanger (int Clr)
+{
+    if (Clr > 7)
+    {
+        Rainbow = 1;
+        Clr = 1;
+    }
+    switch (Clr)
+    {
+    case (1):
+        SetConsoleTextAttribute(Console, 4);
+        break;
+    case (2):
+        SetConsoleTextAttribute(Console, 6);
+        break;
+    case (3):
+        SetConsoleTextAttribute(Console, 14);
+        break;
+    case (4):
+        SetConsoleTextAttribute(Console, 2);
+        break;
+    case (5):
+        SetConsoleTextAttribute(Console, 3);
+        break;
+    case (6):
+        SetConsoleTextAttribute(Console, 1);
+        break;
+    case (7):
+        SetConsoleTextAttribute(Console, 5);
+        break;
+    }
+    Rainbow++;
+}
+
+int one ()
+{
+    int n;
+    ColorChanger(Rainbow);
+    cout << "Введите размер массива:" << endl;
+    ColorChanger(Rainbow);
+    cin >> n;
+    int* arr = new int[n];
+    int* arr2 = new int[n];
+
+    for (int i = 0; i<n ; i++)
+    {
+        arr[i] = rand() % 50;
+        arr2[i] = rand() % 50;
+    }
+    ColorChanger(Rainbow);
+    cout << "Массив A : ";
+    for (int i = 0; i < n; i++)
+    {
+        cout << arr[i] << " ";
+    }
+    ColorChanger(Rainbow);
+    cout << "\nМассив B : ";
+    for (int i = 0; i < n; i++)
+    {
+        cout << arr2[i] << " ";
+    }
+    ColorChanger(Rainbow);
+    cout << "\nИзмененные: " << endl;
+    for (int i = 0; i < n; i++)
+    {
+        swap(arr[i], arr2[i]);
+    }
+    ColorChanger(Rainbow);
+    cout << "Массив A : ";
+    for (int i = 0; i < n; i++)
+    {
+        cout << arr[i] << " ";
+    }
+    ColorChanger(Rainbow);
+    cout << "\nМассив B : ";
+    for (int i = 0; i < n; i++)
+    {
+        cout << arr2[i] << " ";
+    }
+    cout << "\n";
+    return 0;
+}
+
+int two()
+{
+    int n;
+    ColorChanger(Rainbow);
+    cout << "Введите размер массива:" << endl;
+    ColorChanger(Rainbow);
+    cin >> n;
+    int* arr = new int[n];
+    int* gradient = new int[n];
+    int j = 0;
+    for (int i = 0; i < n; i++)
+    {
+        arr[i] = rand() % 50;
+        j += arr[i];
+        gradient[i] = j/(i+1);
+    }
+    ColorChanger(Rainbow);
+    cout << "Массив A : ";
+    for (int i = 0; i < n; i++)
+    {
+        cout << arr[i] << " ";
+    }
+    ColorChanger(Rainbow);
+    cout << "\nМассив среднего арифметического : ";
+    for (int i = 0; i < n; i++)
+    {
+        cout << gradient[i] << " ";
+    }
+    return 0;
+}
+
+int three()
+{
+    int n;
+    int plusCount =0 ;
+    ColorChanger(Rainbow);
+    cout << "Введите размер массива:" << endl;
+    ColorChanger(Rainbow);
+    cin >> n;
+    int* arr = new int[n];
+    ColorChanger(Rainbow);
+    cout << "Массив A : ";
+    for (int i = 0; i < n; i++)
+    {
+        arr[i] = rand() % 50;
+        cout << arr[i] << " ";
+    }
+    for (int i = n-1;i>=0;i--)
+    {
+        if (arr[i]%2!=0)
+        {
+            plusCount = arr[i];
+            break;
+        }
+    }
+    ColorChanger(Rainbow);
+    cout << "\nИзмененный массив : ";
+    for (int i = 0; i < n; i++)
+    {
+        if (arr[i]%2!=0)
+        {
+            arr[i] += plusCount;
+        }
+        cout << arr[i] << " ";
+    }
+    cout << "\n";
+    return 0;
+}
+
+int four()
+{
+    int n, MaxIndex = 0,MinIndex = 0;
+    int max = 0;
+    int min = 1000;
+    ColorChanger(Rainbow);
+    cout << "Введите размер массива:" << endl;
+    ColorChanger(Rainbow);
+    cin >> n;
+    int* arr = new int[n];
+    ColorChanger(Rainbow);
+    cout << "Массив A : ";
+    for (int i = 0; i < n; i++)
+    {
+        arr[i] = rand() % 50;
+        cout << arr[i] << " ";
+    }
+    for (int i = 0; i < n; i++)
+    {
+        if (arr[i] > max)
+        {
+            max = arr [i];
+            MaxIndex = i;
+        }
+        if (arr[i] < min)
+        {
+            min = arr[i];
+            MinIndex = i;
+        }
+    }
+    for (int i = (MaxIndex > MinIndex ? MinIndex : MaxIndex); i < (MaxIndex < MinIndex ? MinIndex : MaxIndex); i++)
+    {
+        arr[i] = 0;
+    }
+    ColorChanger(Rainbow);
+    cout << "\nИзмененный массив  : ";
+    for (int i = 0; i < n; i++)
+    {
+        cout << arr[i] << " ";
+    }
+    cout << "\n";
+    return 0;
+}
+int five()
+{
+    int n;
+    ColorChanger(Rainbow);
+    cout << "Введите размер массива:" << endl;
+    ColorChanger(Rainbow);
+    cin >> n;
+    int index = n-1;
+    vector <int> arr(n);
+    ColorChanger(Rainbow);
+    cout << "Массив A : ";
+    arr[0] = rand() % 50;
+    cout << arr[0] << " ";
+    arr[1] = rand() % 10;
+    cout << arr[1] << " ";
+    for (int i = 2; i < n; i++)
+    {
+        arr[i] = arr[i-1]+rand() % 20;
+        cout << arr[i] << " ";
+    }
+    sort(arr.begin(),arr.end());
+    ColorChanger(Rainbow);
+    cout << "\nИзмененный массив  : ";
+    for (int i = 0; i < n; i++)
+    {
+        cout << arr[i] << " ";
+    }
+    cout << "\n";
+    return 0;
+}
+int main()
+{
+    setlocale(LC_ALL, "Rus");
+    Console = GetStdHandle(STD_OUTPUT_HANDLE);
+    int isContinue = 1;
+    int whatToDo = 0;
+
+    do
+    {
+        ColorChanger(Rainbow);
+        cout << "Выберите задание:\n 1) Даны массивы A и B одинакового размера N. Поменять местами их содержимое и вывести вначале элементы преобразованного массива A, а затем — элементы преобразованного массива B. \n";
+        ColorChanger(Rainbow);
+        cout << " 2) Дан массив A размера N. Сформировать новый массив B того же размера по следующему правилу: элемент BK равен среднему арифметическому элементов массива A с номерами от 1 до K." << endl;
+        ColorChanger(Rainbow);
+        cout << " 3) Дан целочисленный массив размера N. Увеличить все нечетные числа, содержащиеся в массиве, на исходное значение последнего нечетного числа. Если нечетные числа в массиве отсутствуют, то оставить массив без изменений" << endl;
+        ColorChanger(Rainbow);
+        cout << " 4) Дан массив размера N. Обнулить элементы массива, расположенные между его минимальным и максимальным элементами (не включая минимальный и максимальный элементы)." << endl;
+        ColorChanger(Rainbow);
+        cout << " 5) Дан массив размера N, все элементы которого, кроме первого, упорядочены по возрастанию. Сделать массив упорядоченным, переместив первый элемент на новую позицию." << endl;
+
+        cin >> whatToDo;
+
+        switch (whatToDo)
+        {
+        case (1):
+            one();
+            break;
+        case (2):
+            two();
+            break;
+        case (3):
+            three();
+            break;
+        case (4):
+            four();
+            break;
+        case (5):
+            five();
+            break;
+        default:
+            cout << "Ошибка ввода";
+            break;
+        }
+        ColorChanger(Rainbow);
+        cout << "Для выхода введите \"0\"\nДля продаджения введите любое число" << endl;
+        cin >> isContinue;
+
+    } while (isContinue);
+
+}
+
+
+
