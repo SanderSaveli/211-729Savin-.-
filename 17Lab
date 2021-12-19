@@ -1,0 +1,291 @@
+#include <iostream>
+#include <Windows.h>
+#include <conio.h>
+#include <stdio.h>
+using namespace std;
+int Rainbow = 1;
+HANDLE Console;
+
+void ColorChanger (int Clr)
+{
+    if (Clr > 7)
+    {
+        Rainbow = 1;
+        Clr = 1;
+    }
+    switch (Clr)
+    {
+    case (1):
+        SetConsoleTextAttribute(Console, 4);
+        break;
+    case (2):
+        SetConsoleTextAttribute(Console, 6);
+        break;
+    case (3):
+        SetConsoleTextAttribute(Console, 14);
+        break;
+    case (4):
+        SetConsoleTextAttribute(Console, 2);
+        break;
+    case (5):
+        SetConsoleTextAttribute(Console, 3);
+        break;
+    case (6):
+        SetConsoleTextAttribute(Console, 1);
+        break;
+    case (7):
+        SetConsoleTextAttribute(Console, 5);
+        break;
+    }
+    Rainbow++;
+}
+
+int one ()
+{
+    int n,k,l;
+    ColorChanger(Rainbow);
+    cout << "Введите размер массива:" << endl;
+    ColorChanger(Rainbow);
+    cin >> n;
+    ColorChanger(Rainbow);
+    cout << "Введите начало интервала:" << endl;
+    ColorChanger(Rainbow);
+    cin >> k;
+    ColorChanger(Rainbow);
+    cout << "Введите конец интервала:" << endl;
+    ColorChanger(Rainbow);
+    cin >> l;
+    if (k>l || l > n || k < 1)
+    {
+        ColorChanger(Rainbow);
+        cout << "Ошибка ввода" << endl;
+    }
+    int* arr = new int[n];
+    int* gradient = new int[n];
+    int j = 0;
+    k--;
+    l--;
+    cout << "Массив : ";
+    for (int i = 0; i < n; i++)
+    {
+        arr[i] = rand()%20;
+        j += arr[i];
+        gradient[i] = j;
+        cout << arr[i] << " ";
+    }
+    cout << "Средднее арифметическое в интервале от " << k << " до " << l << " : " << (gradient[l] - gradient[k]) / (l - k) << endl;
+
+    return 0;
+}
+
+int two()
+{
+    int n;
+    bool progres;
+    ColorChanger(Rainbow);
+    cout << "Введите размер массива:" << endl;
+    ColorChanger(Rainbow);
+    cin >> n;
+    int* arr = new int[n];
+    ColorChanger(Rainbow);
+    cout << "Инициилизировать массив прогрессией? (0,1): " << endl;
+    cin >> progres;
+    ColorChanger(Rainbow);
+    cout << "Массив: ";
+    if (progres)
+    {
+        arr[0] = rand() % 20;
+        cout << arr[0] << " ";
+        int step = rand() % 5+1;
+        for (int i = 1; i < n; i++)
+        {
+            arr[i] = arr[i - 1] + step;        
+            cout << arr[i] << " ";
+        }
+    }
+    else
+    {
+        for (int i = 0; i < n; i++)
+        {
+            arr[i] = rand() % 20;
+            cout << arr[i] << " ";
+        }
+    }
+    int Step1 = arr[1]-arr[0];
+    bool flag = true;
+    for (int i = 1; i < n-1; i++)
+    {
+        if (arr[i+1]-arr[i] != Step1)
+        {
+            flag = false;
+            break;
+        }
+    }
+    ColorChanger(Rainbow);
+    if (flag)
+    {
+        cout << "Массив образовывает прогрессию с шагом: " << Step1 << endl;
+    }
+    else
+    {
+        cout << "Массив не образовывает прогрессию" << endl;
+    }
+
+    return 0;
+}
+
+int three()
+{
+    int n, min = 1000;
+    ColorChanger(Rainbow);
+    cout << "Введите размер массива:" << endl;
+    ColorChanger(Rainbow);
+    cin >> n;
+    int* arr = new int[n];
+    ColorChanger(Rainbow);
+    cout << "Массив : ";
+    for (int i = 0; i < n; i++)
+    {
+        arr[i] = rand() % 100;
+        cout << arr[i] << " ";
+    }
+    for (int i = 1; i < n; i+=2)
+    {
+        if (arr[i] < min)
+        {
+            min = arr[i];
+        }
+    }
+    ColorChanger(Rainbow);
+    cout << "\nМинимальный четный элемент: " << min << endl;
+    return 0;
+}
+
+int four()
+{
+    int n, max = 0;
+    ColorChanger(Rainbow);
+    cout << "Введите размер массива:" << endl;
+    ColorChanger(Rainbow);
+    cin >> n;
+    int* arr = new int[n];
+    ColorChanger(Rainbow);
+    cout << "Массив : ";
+    for (int i = 0; i < n; i++)
+    {
+        arr[i] = rand() % 100;
+        cout << arr[i] << " ";
+    }
+    for (int i = 1; i < n - 1; i += 2)
+    {
+        if (arr[i] > arr[i + 1] && arr[i] > arr[i - 1] && arr[i] > max)
+        {
+            max = arr[i];
+        }
+    }
+    if (arr[0] > max && arr[0] > arr[1])
+    {
+        max = arr[0];
+    }
+    if (arr[n] > arr[n - 1] && arr[n] > max)
+    {
+        max = arr[n];
+    }
+    ColorChanger(Rainbow);
+    cout << "\nЛокальный максимум :" << max << endl;
+    return 0;
+}
+int five()
+{
+    int n,index ,num ;
+    ColorChanger(Rainbow);
+    cout << "Введите размер массива:" << endl;
+    ColorChanger(Rainbow);
+    cin >> n;
+    int* arr = new int[n];
+
+    arr[0] = rand() % 20;
+    cout << arr[0] << " ";
+    int step = rand() % 5 + 1;
+    for (int i = 1; i < n; i++)
+    {
+        arr[i] = arr[i - 1] + step;
+    }
+    int firstNum = rand() % n;
+    int secondNum = rand() % n;
+    while (firstNum == secondNum)
+    {
+        secondNum = rand() % n;
+    }
+    arr[secondNum] = arr[firstNum];
+    ColorChanger(Rainbow);
+    cout << "Массив: ";
+    for (int i = 1; i < n; i++)
+    {
+        cout << arr[i]<< " ";
+    }
+    for (int i = 0; i < n; i++)
+    {
+        for (int j = i + 1; j < n ; j++)
+        {
+            if (arr[i]== arr[j])
+            {
+                ColorChanger(Rainbow);
+                cout << "Индексы : " << i << " " << j << " Число: " << arr[i] << endl;
+                break;
+            }
+        }
+    }
+    
+    return 0;
+}
+int main()
+{
+    setlocale(LC_ALL, "Rus");
+    Console = GetStdHandle(STD_OUTPUT_HANDLE);
+    int isContinue = 1;
+    int whatToDo = 0;
+
+    do
+    {
+        ColorChanger(Rainbow);
+        cout << "Выберите задание:\n 1) Дан массив размера N и целые числа K и L (1 <= K <= L <= N). Найти среднее арифметическое элементов массива с номерами от K до L включительно. \n";
+        ColorChanger(Rainbow);
+        cout << " 2) Дан целочисленный массив размера N, не содержащий одинаковых чисел. Проверить, образуют ли его элементы арифметическую прогрессию. Если образуют, то вывести разность прогрессии, если нет — вывести 0." << endl;
+        ColorChanger(Rainbow);
+        cout << " 3) Дан массив A размера N. Найти минимальный элемент из его элементов с четными номерами: A2, A4, A6," << endl;
+        ColorChanger(Rainbow);
+        cout << " 4) Дан массив размера N. Найти номер его последнего локального максимума (локальный максимум — это элемент, который больше любого из своих соседей)." << endl;
+        ColorChanger(Rainbow);
+        cout << " 5) Дан целочисленный массив размера N, содержащий ровно два одинаковых элемента. Найти номера одинаковых элементов и вывести эти номера в порядке возрастания" << endl;
+
+        cin >> whatToDo;
+
+        switch (whatToDo)
+        {
+        case (1):
+            one();
+            break;
+        case (2):
+            two();
+            break;
+        case (3):
+            three();
+            break;
+        case (4):
+            four();
+            break;
+        case (5):
+            five();
+            break;
+        default:
+            cout << "Ошибка ввода";
+            break;
+        }
+        ColorChanger(Rainbow);
+        cout << "Для выхода введите \"0\"\nДля продаджения введите любое число" << endl;
+        cin >> isContinue;
+
+    } while (isContinue);
+
+}
